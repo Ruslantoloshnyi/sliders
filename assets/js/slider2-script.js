@@ -6,7 +6,6 @@ const slider_track = document.querySelector('.slider2-track');
 const slides = document.querySelectorAll('.slide2');
 const btnPrev = document.querySelector('.prev');
 const btnNext = document.querySelector('.next');
-const dots = document.querySelectorAll('.dot');
 
 // Cloning first slide and appending it to the end of the track
 const firstSlideClone = slider_track.firstElementChild.cloneNode(true);
@@ -17,8 +16,18 @@ let slideWidth = slider.offsetWidth;
 let slideQuantity = slider_track.children.length;
 let slideIndex = 1;
 
+//Create dot elements
+for (let i = 1; i < slideQuantity; i++) {
+    let new_dot = document.createElement('span');
+    const slider2_dots = document.querySelector('.slider2-dots')
+    slider2_dots.appendChild(new_dot);
+    new_dot.classList.add('dot');
+}
+
+const dots = document.querySelectorAll('.dot');
+
 // Function update active dot
-function setActiveDot() {
+function setActiveDot() {    
     dots.forEach((dot, index) => {
         dot.classList.remove('active');
         if (index === slideIndex - 1) {
